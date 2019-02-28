@@ -8,7 +8,11 @@
     "help": "mdx-deck"
   },
   "devDependencies": {
-    "mdx-deck": "^1.6.7"
+    "mdx-deck": "^1.6.7",
+    "mdx-deck-code-surfer": "^0.5.5",
+    "mdx-deck-live-code": "^1.0.1",
+    "prism-react-renderer": "^0.1.5",
+    "raw-loader": "^1.0.0"
   },
   "name": "scsc-react",
   "version": "1.0.0"

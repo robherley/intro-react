@@ -1,23 +1,190 @@
-import { Head } from 'mdx-deck'
+import { Head } from 'mdx-deck';
+import { CodeSurfer } from 'mdx-deck-code-surfer';
+import oceanicNext from 'prism-react-renderer/themes/oceanicNext';
 
-export { default as theme } from './theme'
+export { default as theme } from './theme';
 
 <Head>
-  <title>Presentation Title</title>
+  <title>SCSC React</title>
 </Head>
 
-# Hello
+# Intro to React.js
+
+<code>https://stevenscsc.slack.com</code>
 
 ---
 
-## Edit this file
+## What is React?
 
-To create your presentation
+- A JavaScript library for building UI (created by Facebook)
+- **Not** a programming language
+- Component Based, Declarative Architecture
+- One of the most popular UI libraries (for now)
 
-```notes
-- Create speaker notes in fenced code blocks
+---
+
+## Why React?
+
+- Web apps are becoming more complex and JQuery doesn't cut it anymore.
+- Modern web development requires an organized, structured approach.
+- Efficient, _declarative_, updating of the DOM
+- Specialized components with encapsulated state
+
+---
+
+## Declarative!
+
+- Utilizes the **Virtual DOM**, for comparison with the real DOM
+- Watches changes in state, and updates what’s necessary!
+
+![Updating DOM](./examples/updates.gif)
+
+---
+
+## One Way Data Flow
+
+- Thinking about how the UI should look!
+- Not how to change it over time eliminates a whole class of bugs.
+- Abstracts away normal DOM operations:
+  - Event Handling
+  - Attribute Manipulation
+  - Manual DOM Updating (what you use JQuery for)
+
+---
+
+## JSX
+
+```jsx
+const name = 'CS Club';
+const element = <h1>Hello, {name}!</h1>;
 ```
 
+- HTML + JS = JSX
+- **J**ava**S**cript **X**ML
+- Syntax Extension to JavaScript
+- Rendering logic is inherently coupled with other UI logic
+- Produces React Elements
+- [Transpiled to Normal JS](https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=JYWwDg9gTgLgBAJQKYEMDG8BmUIjgcilQ3wG4AoctCAOwGd4AVJAD3gF44AKASjnYB8cADxgBACSQAbKRDgB1aFIAmwgPRjKrSLDjKkmFAFcpTVjFJA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.3.4)
+
 ---
 
-<https://github.com/jxnblk/mdx-deck>
+<CodeSurfer
+  title="Our First Component"
+  code={require('!raw-loader!./examples/FirstComponent.jsx')}
+  theme={oceanicNext}
+  lang="jsx"
+  showNumbers={false}
+  dark={false}
+  steps={[
+    { notes: 'A Simple Component' },
+    { lines: [1], notes: 'Importing React and Component Class' },
+    { lines: [3], notes: 'Create Our Class, extending on a React Component' },
+    {
+      range: [4, 6],
+      notes: 'When our component mounts, we render an h1'
+    },
+    {
+      lines: [10],
+      notes: 'Then export our component so it can be used by another file'
+    }
+  ]}
+/>
+
+---
+
+# Hello CS Club!
+
+---
+
+<CodeSurfer
+  title="Component Props"
+  code={require('!raw-loader!./examples/Props.jsx')}
+  theme={oceanicNext}
+  lang="jsx"
+  showNumbers={false}
+  dark={false}
+  steps={[
+    { notes: 'Since we want our Components to be reusable, we pass props' },
+    {
+      tokens: { 4: [...Array(18).keys()].splice(2) },
+      notes: 'We get the props from "this", which is the React Component Class'
+    },
+    {
+      range: [9, 12],
+      notes: 'We can import our Component into a separate file, and use it!'
+    },
+    {
+      tokens: { 11: [4, 5, 6, 7, 8], 12: [...Array(13).keys()].splice(3) },
+      notes: 'Note how simple it is to change the data our Component displays'
+    },
+    {}
+  ]}
+/>
+
+---
+
+## Stateful Components
+
+- A **State** is an object that determines how a component renders and behaves
+- State is similar to props, but it is private and fully controlled by the component.
+- Useful for:
+  - Local Component UI Changes
+  - Storing Data From Async Requests
+  - Handling Info From Event Handlers
+
+---
+
+<CodeSurfer
+  title="Stateful Component"
+  code={require('!raw-loader!./examples/State.jsx')}
+  theme={oceanicNext}
+  lang="jsx"
+  showNumbers={false}
+  dark={false}
+  steps={[
+    { notes: 'We need to add quite a bit to our component' },
+    {
+      range: [2, 7],
+      notes: 'Our constructor is execute when our component is created'
+    },
+    {
+      range: [4, 6],
+      notes: 'This is our initial state'
+    },
+    {
+      range: [13, 20],
+      notes: 'We added an input to our render field'
+    },
+    {
+      lines: [17],
+      notes: 'When the input onChange event fires, it calls handleChange'
+    },
+    {
+      range: [9, 11],
+      notes: 'We get the value from the event target, and change our State'
+    },
+    {
+      lines: [10, 16],
+      notes: 'Now, React will change our h1 element to say the new name'
+    },
+    {}
+  ]}
+/>
+
+---
+
+## See StateFul Example
+
+[Code Sandbox](https://codesandbox.io/s/50nnrkom0p)
+
+---
+
+## create-react-app
+
+- CLI Tool for creating React applications
+- Uses **Webpack** under the hood, but is automatically configured for you
+- Comes bundled with a development server and hot reloading
+
+---
+
+<https://github.com/robherley/intro-react>

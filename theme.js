@@ -1,12 +1,14 @@
-import theme from 'mdx-deck/themes'
+import theme from 'mdx-deck/themes';
 
 export default {
   ...theme,
-
-  // Customize your presentation theme here.
-  //
-  // Read the docs for more info:
-  // https://github.com/jxnblk/mdx-deck/blob/master/docs/theming.md
-  // https://github.com/jxnblk/mdx-deck/blob/master/docs/themes.md
-
-}
+  font: 'IBM Plex Sans',
+  colors: {
+    text: '#fff',
+    background: 'rgb(40, 44, 52)',
+    link: 'rgb(141, 200, 145)'
+  },
+  heading: {
+    color: 'rgb(121, 182, 242)'
+  }
+};
